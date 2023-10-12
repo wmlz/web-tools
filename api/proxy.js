@@ -2,7 +2,7 @@ const request = require("request");
 
 module.exports = (req, res) => {
   // proxy middleware options
-  let prefix = "/tailscale";
+  let prefix = "/tailscale/";
   if (!req.url.startsWith(prefix)) {
     return;
   }
