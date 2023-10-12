@@ -10,11 +10,7 @@ module.exports = (req, res) => {
 
   var options = {
     "method": "GET",
-    "url": target,
-    "headers": {
-      "Notion-Version": res.headers["notion-version"],
-      "Authorization": res.headers["authorization"]
-    }
+    "url": target
   };
   request(options, function(error, response) {
     if (error) throw new Error(error);
