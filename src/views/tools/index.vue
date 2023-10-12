@@ -1,19 +1,29 @@
 <script setup lang="ts" name="Tools">
 import { getListApi, getListApiError } from "@/api/mock";
+import { sendS20Broadcast, sendMi6Broadcast } from "@/api/bocft";
 import { reactive } from "vue";
 import { showFailToast, showSuccessToast } from "vant";
 import "vant/es/toast/style";
 
 const showList: string[] = reactive([]);
 
-const handleSuccessReq = async () => {
-  const { list } = await getListApi();
+const lzDaka = async () => {
+  sendMi6Broadcast(
+    { intent: "on" }
+  );
   showSuccessToast("请求成功");
-  showList.push(...list);
+};
+const llDaka = async () => {
+  sendS20Broadcast(
+    { intent: "111" }
+  );
+  showSuccessToast("请求成功");
+
 };
 const handleErrorReq = () => {
   getListApiError().then(
-    () => {},
+    () => {
+    },
     err => {
       console.log(err);
       showFailToast("请求有误");
@@ -28,8 +38,8 @@ const handleErrorReq = () => {
       <h3 class="font-bold text-[18px] my-[4px]">Mock</h3>
     </div>
     <van-space>
-      <van-button type="success" @click="handleSuccessReq">成功请求</van-button>
-      <van-button type="danger" @click="handleErrorReq">失败请求</van-button>
+      <van-button type="success" @click="lzDaka">甜甜打卡</van-button>
+      <van-button type="danger" @click="llDaka">乖乖打卡</van-button>
     </van-space>
     <div
       class="text-[14px] py-[2px] px-[10px] rounded-[4px] bg-[var(--color-block-background)] mt-[14px]"

@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/tailscale/(.*)",
+      "destination": "/api/proxy"
+    }
+  ]
+}
