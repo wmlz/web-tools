@@ -16,7 +16,7 @@ export function sendMi6Broadcast(params?: object): Promise<ListResult> {
 
 export function sendS20Broadcast(params?: object): Promise<ListResult> {
   return http.request({
-    url: "/tailscale/http:////cell-s20:8080/api/broadcast",
+    url: "/tailscale/http:\\/\\/cell-s20:8080/api/broadcast",
     method: "get",
     params
   });
