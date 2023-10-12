@@ -1,28 +1,28 @@
 import { http } from "@/utils/http";
 
-type ListResult = {
+type Result = {
   code: number;
-  message: string;
-  list: Array<any>;
+  msg: string;
+  data: JSON;
 };
 
-export function sendMi6Broadcast(params?: object): Promise<ListResult> {
+export function sendMi6Broadcast(params?: object): Promise<Result> {
   return http.request({
-    url: "/tailscale/http:////cell-mi6:8080/api/broadcast",
+    url: "http://cell-mi6:8080/api/broadcast",
     method: "get",
     params
   });
 }
 
-export function sendS20Broadcast(params?: object): Promise<ListResult> {
+export function sendS20Broadcast(params?: object): Promise<Result> {
   return http.request({
-    url: "/tailscale/http:\\/cell-s20:8080/api/broadcast",
+    url: "http://cell-s20:8080/api/broadcast",
     method: "get",
     params
   });
 }
 
-export function getListApiError(data?: object): Promise<ListResult> {
+export function getListApiError(data?: object): Promise<Result> {
   return http.request({
     url: "/list/error",
     method: "post",

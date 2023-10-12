@@ -5,20 +5,31 @@ import { reactive } from "vue";
 import { showFailToast, showSuccessToast } from "vant";
 import "vant/es/toast/style";
 
-const showList: string[] = reactive([]);
 
+
+const lzTest = async () => {
+  const res = await sendMi6Broadcast({ intent: "on" });
+  console.log("xxxxx", res);
+
+  showSuccessToast("请求成功");
+};
+const llTest = async () => {
+  const res = await sendS20Broadcast({ intent: "111" });
+  console.log("2222", res);
+
+  showSuccessToast("请求成功");
+};
 const lzDaka = async () => {
-  sendMi6Broadcast(
-    { intent: "on" }
-  );
+  const res = await sendMi6Broadcast({ intent: "dkll" });
+  console.log("xxxxx", res);
+
   showSuccessToast("请求成功");
 };
 const llDaka = async () => {
-  sendS20Broadcast(
-    { intent: "111" }
-  );
-  showSuccessToast("请求成功");
+  const res = await sendS20Broadcast({ intent: "daka" });
+  console.log("2222", res);
 
+  showSuccessToast("请求成功");
 };
 const handleErrorReq = () => {
   getListApiError().then(
@@ -38,14 +49,16 @@ const handleErrorReq = () => {
       <h3 class="font-bold text-[18px] my-[4px]">Mock</h3>
     </div>
     <van-space>
-      <van-button type="success" @click="lzDaka">甜甜打卡</van-button>
+      <van-button type="success" @click="lzTest">甜甜测试</van-button>
+      <van-button type="success" @click="llTest">乖乖测试</van-button>
+      <van-button type="danger" @click="lzDaka">甜甜打卡</van-button>
       <van-button type="danger" @click="llDaka">乖乖打卡</van-button>
     </van-space>
     <div
       class="text-[14px] py-[2px] px-[10px] rounded-[4px] bg-[var(--color-block-background)] mt-[14px]"
     >
       <p class="my-[14px] leading-[24px]">
-        {{ showList }}
+
       </p>
     </div>
   </div>
